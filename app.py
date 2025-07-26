@@ -5,7 +5,9 @@ import os
 UPLOAD_FOLDER = 'uploads'
 
 app = Flask(__name__)
-
+@app.route('/healthz')
+def healthz():
+    return "OK", 200
 @app.after_request
 def after_request(response):
     response.headers['Access-Control-Allow-Origin'] = '*'  # Replace with a specific domain in production environments
